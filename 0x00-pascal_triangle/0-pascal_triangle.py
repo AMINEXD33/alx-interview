@@ -27,12 +27,12 @@ def pascal_triangle(n):
         return []
     whole_thing = []
     cached_row = [1]
-    row_count = 0
-    # whole_thing.append(cached_row)
+    row_count = 1
+    whole_thing.append(cached_row)
     while row_count < n:
         row = [None] * (len(cached_row) + 1)  # allocate strictly the memory needed
         limit = len(cached_row)
-        for col in range(0, limit, 4):
+        for col in range(0, limit + 1, 4):
             element = try_get_elements_C1_C2(col, cached_row)
             row[col] = element
 
