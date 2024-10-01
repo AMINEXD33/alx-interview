@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""
-Module that defines a function to generate Pascal's triangle up to a given level.
-"""
+"""Module that defines a function to \
+    generate Pascal's triangle up to a given level."""
 
 
 def try_get_elements_c1_c2(current_col: int, cached_row):
@@ -34,7 +33,8 @@ def pascal_triangle(n):
         n (int): The number of rows of Pascal's triangle to generate.
 
     Returns:
-        list: A list of lists, where each list represents a row of Pascal's triangle.
+        list: A list of lists, where each list represents \
+            a row of Pascal's triangle.
     """
     if n <= 0:
         return []
@@ -43,7 +43,8 @@ def pascal_triangle(n):
     row_count = 1
     whole_thing.append(cached_row)
     while row_count < n:
-        row = [None] * (len(cached_row) + 1)  # allocate strictly the memory needed
+        # allocate strictly the memory needed
+        row = [None] * (len(cached_row) + 1)
         limit = len(cached_row)
         for col in range(0, limit + 1, 4):
             element = try_get_elements_c1_c2(col, cached_row)
