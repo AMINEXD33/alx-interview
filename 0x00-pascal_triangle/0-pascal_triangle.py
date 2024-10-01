@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-
-
 def try_get_elements_C1_C2(current_col: int, cached_row):
+    """
+    return the correct sum of two elements on top of an other
+    """
     position1 = current_col - 1
     position2 = current_col
     element1 = 0
@@ -14,10 +15,15 @@ def try_get_elements_C1_C2(current_col: int, cached_row):
 
 
 def pascal_triangle(n):
+    """
+    this function returns the pascal triangle in an array
+    """
     if n <= 0:
         return []
+    whole_thing = []
     cached_row = [1]
     row_count = 0
+    whole_thing.append(cached_row)
     while row_count < n:
         row = [None] * (len(cached_row) + 1)  # allocate strictly the memory needed
         limit = len(cached_row)
@@ -39,7 +45,5 @@ def pascal_triangle(n):
         cached_row = row
         row = []
         row_count += 1
-        print(cached_row)
-
-
-pascal_triangle(1400)
+        whole_thing.append(cached_row)
+    return whole_thing
