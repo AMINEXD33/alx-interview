@@ -1,12 +1,19 @@
 #!/usr/bin/python3
 """
-0-pascal_triangle
+Module that defines a function to generate Pascal's triangle up to a given level.
 """
 
 
 def try_get_elements_C1_C2(current_col: int, cached_row):
     """
-    return the correct sum of two elements on top of an other
+    Calculate the sum of two elements in the previous row of Pascal's triangle.
+
+    Args:
+        current_col (int): The current column index in the row.
+        cached_row (list): The previous row in the Pascal triangle.
+
+    Returns:
+        int: The sum of the two adjacent elements from the previous row.
     """
     position1 = current_col - 1
     position2 = current_col
@@ -21,7 +28,13 @@ def try_get_elements_C1_C2(current_col: int, cached_row):
 
 def pascal_triangle(n):
     """
-    this function returns the pascal triangle in an array
+    Generate Pascal's triangle up to the nth row.
+
+    Args:
+        n (int): The number of rows of Pascal's triangle to generate.
+
+    Returns:
+        list: A list of lists, where each list represents a row of Pascal's triangle.
     """
     if n <= 0:
         return []
