@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+0-pascal_triangle.py
+"""
+
+
 def try_get_elements_C1_C2(current_col: int, cached_row):
     """
     return the correct sum of two elements on top of an other
