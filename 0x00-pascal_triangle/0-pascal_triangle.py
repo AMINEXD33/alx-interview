@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-0-pascal_triangle.py
+0-pascal_triangle
 """
 
 
@@ -28,11 +28,11 @@ def pascal_triangle(n):
     whole_thing = []
     cached_row = [1]
     row_count = 0
-    whole_thing.append(cached_row)
+    # whole_thing.append(cached_row)
     while row_count < n:
         row = [None] * (len(cached_row) + 1)  # allocate strictly the memory needed
         limit = len(cached_row)
-        for col in range(0, limit + 1, 4):
+        for col in range(0, limit, 4):
             element = try_get_elements_C1_C2(col, cached_row)
             row[col] = element
 
