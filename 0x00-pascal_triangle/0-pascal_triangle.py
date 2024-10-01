@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def try_get_elements_C1_C2(current_col: int, cached_row):
     position1 = current_col - 1
     position2 = current_col
