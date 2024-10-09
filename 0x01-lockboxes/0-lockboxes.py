@@ -10,6 +10,10 @@ def canUnlockAll(boxes):
     """
     count = 1
     cach = {}
+    if not boxes:
+        return False
+    if len(boxes):
+        return False
     for box_index in range(len(boxes)):
 
         for key in boxes[box_index]:
