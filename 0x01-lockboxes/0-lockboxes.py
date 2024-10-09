@@ -8,22 +8,17 @@ def canUnlockAll(boxes):
     may not contain keys to other boxes
     and determins if all boxes can be oppened
     """
-    count = 1
-    cach = {}
     if not boxes:
         return False
-    
-    for box_index in range(len(boxes)):
 
-        for key in boxes[box_index]:
-            if key == box_index:
-                count += 1
-            else:
-                # cache the key
-                cach[key] = True
+    n = len(boxes)
+    unlocked = [False]
+    unlocked[0] = True
+    keys = set(boxes[0])
 
-        if cach.get(box_index):
-            count += 1
-    if count == len(boxes):
-        return True
-    return False
+    while keys:
+        new_key = keys.pop()
+        if new_key < n and not unlocked[new_key]:
+            unlocked[new_key] = True
+            keys.update(boxes[new_key])
+    return all(unlocked)
