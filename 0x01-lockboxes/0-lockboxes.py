@@ -2,35 +2,23 @@
 """a module that contains a function that solves the problem Lockboxes"""
 
 
-def valid_box(boxes, jump_index):
-    """
-    check if a box is a valid box to check
-    """
-    if jump_index > len(boxes) - 1 or jump_index < 0:
-        return False
-    return True
-
-
 def canUnlockAll(boxes):
     """
     function that takes an array of boxes that may or
     may not contain keys to other boxes
     and determines if all boxes can be opened.
     """
-    curr_box = 0
-    found_keys = [0]
-    already_opened = {0: True}
-    count = 1
+    if (type(boxes)) is not list:
+        return False
+    elif (len(boxes)) == 0:
+        return False
 
-    while found_keys:
-        curr_box = found_keys.pop(0)
-        for key in boxes[curr_box]:
-            if key != curr_box and key not in already_opened:
-                found_keys.append(key)
-                already_opened[key] = True
-                count += 1
-
-        if count == len(boxes):
-            return True
-
-    return count == len(boxes)
+    for k in range(1, len(boxes) - 1):
+        boxes_checked = False
+        for idx in range(len(boxes)):
+            boxes_checked = k in boxes[idx] and k != idx
+            if boxes_checked:
+                break
+        if boxes_checked is False:
+            return boxes_checked
+    return True
