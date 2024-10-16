@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def past(n, current_value, copied_value):
     """
     simulate a past , by returning the copied value
