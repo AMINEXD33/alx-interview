@@ -38,7 +38,7 @@ def deapth_search(n, operation=1, current_value=1, copied_value=0, ops=0):
         rs2 = deapth_search(n, 0, current_value, copied_value, ops)
 
         # if both cources of action return, check the smallest
-        if rs1 and rs2:
+        if rs1 is not False and rs2 is not False:
             if rs1 > rs2:
                 return rs2
             else:
@@ -55,7 +55,8 @@ def deapth_search(n, operation=1, current_value=1, copied_value=0, ops=0):
 
     # we did a copy
     elif operation == 1:
-        copied_value = current_value
+        if copied_value != current_value:
+            copied_value = current_value
         ops += 1
         """
         for every copy only one posible action is possible and it's a past
