@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""this module contains three function to
+help solve the Minimum Operations problem"""
+
+
 def past(n, current_value, copied_value):
     """
     simulate a past , by returning the copied value
