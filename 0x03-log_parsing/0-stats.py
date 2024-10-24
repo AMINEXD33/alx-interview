@@ -37,7 +37,7 @@ def isValidResponse(code: int) -> bool:
 
 if __name__ == "__main__":
     # damn = r'^([0-9]*\.[0-9]*)*\s-\s(\[[0-9]{4}-[0-9]{2}-[0-9]{2}\s)(:?[0-9]{2}:?)*\.([0-9]*\])\s("[A-Z]*)\s(\/[a-zA-Z0-9]*(\/?[a-zA-Z0-9]*))\s(HTTP\/[0-9]{1}\.[0-9]")\s([0-9]{3})\s([0-9]*)'  # nopep8
-    damn = r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d+\] "GET /projects/260 HTTP/1.1" (.{3}) (\d+)'
+    damn = r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d+\] "GET /projects/260 HTTP/1.1" (.{3}) (\d+)'  # nopep8
     responses_dict: dict = create_dict_of_respose_codes()
     file_size: int = 0
     itterations: int = 0
@@ -46,11 +46,11 @@ if __name__ == "__main__":
             rgx = re.search(damn, line)
             itterations += 1
             if rgx:
-                code: int = int(rgx.group(9))
+                code: int = int(rgx.group(1))
                 if isValidResponse(code):
                     responses_dict[code] = responses_dict[code] + 1
                 pass
-                file_size += int(rgx.group(10))
+                file_size += int(rgx.group(2))
             if itterations % 10 == 0:
                 output(responses_dict, file_size)
     finally:
