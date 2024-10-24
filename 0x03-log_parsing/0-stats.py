@@ -1,65 +1,50 @@
 #!/usr/bin/python3
-""" this module contains a functions that can parse some data :> """
-import re
-import fileinput
+"""
+log parsing
+"""
+
 import sys
+import re
 
 
-def output(log: dict, fileSize: int) -> None:
+def output(lg: dict) -> None:
     """
     helper function to display stats
     """
-    print(f"File size: {fileSize}")
-    for key in log:
-        print(f"{key}: {log[key]}")
-
-
-def create_dict_of_respose_codes() -> dict:
-    """
-    helper function that initiate a dict with the wanted response codes
-    """
-    res_codes = [200, 301, 400, 401, 403, 404, 405, 500]
-    dict_: dict = {}
-    for key in res_codes:
-        dict_[key] = 0
-    return dict_
-
-
-def isValidResponse(code: int) -> bool:
-    """
-    helper function that checks if a response code is valid
-    (what we want , ignoring others)
-    """
-    if code in [200, 301, 400, 401, 403, 404, 405, 500]:
-        return True
-    return False
+    print("File size: {}".format(lg["file_size"]))
+    for code in sorted(lg["code_frequency"]):
+        if lg["code_frequency"][code]:
+            print("{}: {}".format(code, lg["code_frequency"][code]))
 
 
 if __name__ == "__main__":
-    damn = r'^([0-9]*\.[0-9]*)*\s-\s(\[[0-9]{4}-[0-9]{2}-[0-9]{2}\s)(:?[0-9]{2}:?)*\.([0-9]*\])\s("[A-Z]*)\s(\/[a-zA-Z0-9]*(\/?[a-zA-Z0-9]*))\s(HTTP\/[0-9]{1}\.[0-9]")\s([0-9]{3})\s([0-9]*)'  # nopep8
+    damn = re.compile(
+    r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d+\] "GET /projects/260 HTTP/1.1" (.{3}) (\d+)')  # nopep8
 
-    responses_dict: dict = create_dict_of_respose_codes()
-    file_size: int = 0
-    iterations: int = 0
+    line_count = 0
+    lg = {}
+    lg["file_size"] = 0
+    lg["code_frequency"] = {
+        str(code): 0 for code in [
+            200, 301, 400, 401, 403, 404, 405, 500]}
+
     try:
         for line in sys.stdin:
-            rgx = re.search(damn, line)
-            if rgx:
-                
-                code: int = int(rgx.group(9))
+            line = line.strip()
+            match = damn.fullmatch(line)
+            if (match):
+                line_count += 1
+                code = match.group(1)
+                file_size = int(match.group(2))
 
-                try:
-                    file_size += int(rgx.group(10))
-                except Exception:
-                    continue
+                # File size
+                lg["file_size"] += file_size
 
-                if isValidResponse(code):
-                    responses_dict[code] = responses_dict[code] + 1
-                else:
-                    continue
+                # status code
+                if (code.isdecimal()):
+                    lg["code_frequency"][code] += 1
 
-                iterations += 1
-                if iterations % 10 == 0:
-                    output(responses_dict, file_size)
+                if (line_count % 10 == 0):
+                    output(lg)
     finally:
-        output(responses_dict, file_size)
+        output(lg)
