@@ -45,7 +45,7 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             rgx = re.search(damn, line)
-
+            itterations += 1
             if rgx:
                 code: int = int(rgx.group(9))
                 if isValidResponse(code):
