@@ -44,17 +44,17 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             rgx = re.search(damn, line)
-            iterations += 1
             if rgx:
+                iterations += 1
                 code: int = int(rgx.group(9))
                 if isValidResponse(code):
                     responses_dict[code] = responses_dict[code] + 1
                 pass
-            try:
-                file_size += int(rgx.group(10))
-            except Exception:
-                pass
-            if iterations % 10 == 0:
-                output(responses_dict, file_size)
+                try:
+                    file_size += int(rgx.group(10))
+                except Exception:
+                    pass
+                if iterations % 10 == 0:
+                    output(responses_dict, file_size)
     finally:
         output(responses_dict, file_size)
