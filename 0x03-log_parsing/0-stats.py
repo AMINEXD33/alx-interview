@@ -36,7 +36,6 @@ def isValidResponse(code: int) -> bool:
 
 
 if __name__ == "__main__":
-    """main entry to the script"""
     damn = r'^([0-9]*\.[0-9]*)*\s-\s(\[[0-9]{4}-[0-9]{2}-[0-9]{2}\s)(:?[0-9]{2}:?)*\.([0-9]*\])\s("[A-Z]*)\s(\/[a-zA-Z0-9]*(\/?[a-zA-Z0-9]*))\s(HTTP\/[0-9]{1}\.[0-9]")\s([0-9]{3})\s([0-9]*)'  # nopep8
 
     responses_dict: dict = create_dict_of_respose_codes()
