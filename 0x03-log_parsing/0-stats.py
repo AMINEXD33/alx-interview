@@ -47,16 +47,18 @@ if __name__ == "__main__":
             if rgx:
                 
                 code: int = int(rgx.group(9))
+
+                try:
+                    file_size += int(rgx.group(10))
+                except Exception:
+                    continue
+
                 if isValidResponse(code):
                     responses_dict[code] = responses_dict[code] + 1
                 else:
                     continue
 
                 iterations += 1
-                try:
-                    file_size += int(rgx.group(10))
-                except Exception:
-                    pass
                 if iterations % 10 == 0:
                     output(responses_dict, file_size)
     finally:
