@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""this module contains a function that validate UTF-8"""
 # def DETERMINE_ERROR(err):
 #     print(err, end=" > ")
 
