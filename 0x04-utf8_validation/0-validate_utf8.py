@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """this module contains a function that validate UTF-8"""
 
+
 def get_leading_set_bits(num):
     """returns the number of leading set bits (1)"""
     set_bits = 0
@@ -22,6 +23,7 @@ def validUTF8(data):
             if bits_count == 1 or bits_count > 4:
                 return False
         else:
+
             if not (data[i] & (1 << 7) and not (data[i] & (1 << 6))):
                 return False
         bits_count -= 1
