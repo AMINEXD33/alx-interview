@@ -2,6 +2,7 @@
 """this modul contains one function to rotate a n * n matrix"""
 import math
 
+
 def rotate_2d_matrix(matrix) -> None:
     """
     a function that rotates a matrix of n * n type
