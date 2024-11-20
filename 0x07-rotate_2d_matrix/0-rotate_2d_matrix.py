@@ -9,11 +9,11 @@ def ceil(number):
     a local implementation of the ceil function
     since im not allowed to import any module -_-
     """
-    if int(number) == number:  #
+    if int(number) == number:
         return int(number)
-    elif number > 0: 
+    elif number > 0:
         return int(number) + 1
-    else: 
+    else:
         return int(number)
 
 
