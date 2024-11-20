@@ -9,12 +9,13 @@ def ceil(number):
     a local implementation of the ceil function
     since im not allowed to import any module -_-
     """
-    if int(number) == number:
-        return int(number)
-    elif number > 0:
-        return int(number) + 1
+    if type(number) is float:
+        if number > 0:
+            return int(number + 1)
+        else:
+            return int(number - 1)
     else:
-        return int(number)
+        return number
 
 
 def rotate_2d_matrix(matrix) -> None:
