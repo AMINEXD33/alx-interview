@@ -22,6 +22,9 @@ def rotate_2d_matrix(matrix) -> None:
     """
     a function that rotates a matrix of n * n type
     """
+
+    if len(matrix) <= 1 or len(matrix[0]) <= 1:
+        return
     # transpose matrix
     matrix_lenght: int = len(matrix)
     for i in range(ceil(matrix_lenght / 2)):
