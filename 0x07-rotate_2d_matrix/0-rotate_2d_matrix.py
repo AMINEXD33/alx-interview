@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-import math
-
 """this modul contains one function to rotate a n * n matrix"""
-
+import math
 
 def rotate_2d_matrix(matrix) -> None:
     """
