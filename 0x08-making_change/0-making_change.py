@@ -3,11 +3,11 @@
 import math
 
 
-def makeChange(coins, total):
+def makeChange(coins, total) -> int:
     """a function to calculate the minimum amount of coins
         to get a total value
     """
-    dp: list[int] = [math.inf] * (total + 1)
+    dp: list = [math.inf] * (total + 1)
     dp[0] = 0
 
     for n in range(1, total + 1):
