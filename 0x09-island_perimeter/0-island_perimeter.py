@@ -1,7 +1,12 @@
 #!/usr/bin/python3
 """this module contains a function that solves the island perimiter problem"""
 
+
 def island_perimeter(grid):
+    """
+    this function takes a grid n * n  that represent
+    an island and determins its perimiter
+    """
     def look_right(i: int, j: int):
         """
         a helper function that returns true if the
