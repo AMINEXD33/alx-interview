@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""this module contains a function that solves the island perimiter problem"""
+
 def island_perimeter(grid):
     def look_right(i: int, j: int):
         """
