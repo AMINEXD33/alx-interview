@@ -7,6 +7,9 @@ def island_perimeter(grid):
     this function takes a grid n * n  that represent
     an island and determins its perimiter
     """
+    if len(grid) > 100:
+        return 0
+
     def look_right(i: int, j: int):
         """
         a helper function that returns true if the
@@ -90,3 +93,15 @@ def island_perimeter(grid):
 
         # set the configuration for the next itter
         first_configuration = found_blocks
+
+
+
+if __name__ == "__main__":
+    grid = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0],
+        [0, 1, 0, 1, 0, 0],
+        [0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+    ]
+    print(island_perimeter(grid))
