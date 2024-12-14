@@ -8,6 +8,11 @@ if __name__ == "__main__":
     matrix = [[1, 2, 3],
               [4, 5, 6],
               [7, 8, 9]]
-
+    matrix2 = [
+        [1,2],
+        [3,4],
+    ]
     rotate_2d_matrix(matrix)
+    rotate_2d_matrix(matrix2)
     print(matrix)
+    print(matrix2)
